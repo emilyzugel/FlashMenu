@@ -1,5 +1,5 @@
-<h1>FLASHMENU</h1>
-<h2>Transforming Ordering, Elevating Experiences Instantly</h2>
+<h1>Flash Menu</h1>
+<h4><italic>Transforming Ordering, Elevating Experiences Instantly</italic></h4>
 
 <div>
     <img src="https://img.shields.io/badge/last_commit-today-brightgreen" alt="Last Commit">
@@ -8,9 +8,9 @@
     <img src="https://img.shields.io/badge/languages-3-orange" alt="Languages">
 </div>
 
-<h2>🛠 Built With</h2>
+<h3>🛠 Built With</h3>
 
-<h3>Backend</h3>
+<h4>Backend</h4>
 <div>
     <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express">
     <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
@@ -20,7 +20,7 @@
     <img src="https://img.shields.io/badge/ENV-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black" alt="ENV">
 </div>
 
-<h3>Frontend</h3>
+<h4>Frontend</h4>
 <div>
     <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
     <img src="https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white" alt="Nodemon">
@@ -31,16 +31,16 @@
 
 <hr>
 
-<h2>Overview</h2>
+<h3>Overview</h3>
 <p>FlashMenu is a full-stack developer toolkit for building modern digital ordering platforms. It combines a React-based frontend with a robust Node.js backend, all designed for scalability and ease of development.</p>
 
 <h3>Why FlashMenu?</h3>
 <p>This project simplifies creating dynamic, scalable web applications for ordering and commerce. The core features include:</p>
 <ul>
-    <li>✅ <strong>Fast Development:</strong> Utilizes Vite and React for rapid UI iteration and hot module replacement.</li>
-    <li>✅ <strong>Modular Architecture:</strong> Clear separation of frontend and backend components for maintainability.</li>
-    <li>✅ <strong>Secure & Scalable Backend:</strong> Built with Express.js, MongoDB, and middleware for robust data handling.</li>
-    <li>✅ <strong>Seamless Shopping Experience:</strong> Context API manages cart state across pages for smooth user interactions.</li>
-    <li>✅ <strong>API-Driven Data Management:</strong> RESTful endpoints facilitate efficient CRUD operations for companies and products.</li>
-    <li>✅ <strong>User-Centric UI Components:</strong> Reusable components for browsing, filtering, and ordering, enhancing user engagement.</li>
+    <li><strong>Fast Development:</strong> Utilizes Vite and React for rapid UI iteration and hot module replacement.</li>
+    <li><strong>Modular Architecture:</strong> Clear separation of frontend and backend components for maintainability.</li>
+    <li><strong>Secure & Scalable Backend:</strong> Built with Express.js, MongoDB, and middleware for robust data handling.</li>
+    <li><strong>Seamless Shopping Experience:</strong> Context API manages cart state across pages for smooth user interactions.</li>
+    <li><strong>API-Driven Data Management:</strong> RESTful endpoints facilitate efficient CRUD operations for companies and products.</li>
+    <li><strong>User-Centric UI Components:</strong> Reusable components for browsing, filtering, and ordering, enhancing user engagement.</li>
 </ul>
