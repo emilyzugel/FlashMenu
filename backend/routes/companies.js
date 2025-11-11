@@ -79,12 +79,21 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/companies/:slug - Atualizar empresa
-router.put('/:slug', async (req, res) => {
+// PUT /api/companies/:slug/logo - Atualizar logo da empresa
+router.put('/:slug/logo', async (req, res) => {
   try {
+    const { logo } = req.body;
+
+    if (!logo) {
+      return res.status(400).json({
+        success: false,
+        message: 'URL da logo é obrigatória'
+      });
+    }
+
     const company = await Company.findOneAndUpdate(
       { slug: req.params.slug },
-      { $set: req.body },
+      { $set: { logo } },
       { new: true, runValidators: true }
     );
 
@@ -97,13 +106,13 @@ router.put('/:slug', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Empresa atualizada com sucesso',
+      message: 'Logo atualizada com sucesso',
       data: company
     });
   } catch (error) {
     res.status(400).json({
       success: false,
-      message: 'Erro ao atualizar empresa',
+      message: 'Erro ao atualizar logo',
       error: error.message
     });
   }

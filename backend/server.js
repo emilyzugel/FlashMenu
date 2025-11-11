@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import connectDB from './config/database.js';
 import companiesRoutes from './routes/companies.js';
+import uploadRoutes from './routes/upload.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,17 +15,23 @@ const PORT = process.env.PORT || 3001;
 // Conectar ao MongoDB
 connectDB();
 
-// Middlewares de segurança
-app.use(helmet());
+// ✅ CORRIGIDO: CORS mais permissivo para desenvolvimento
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  credentials: true
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Middlewares de segurança
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" } // ✅ Permite imagens cross-origin
 }));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100 // máximo 100 requests por windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 1000 // Aumentado para desenvolvimento
 });
 app.use(limiter);
 
@@ -32,7 +39,8 @@ app.use(limiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Routes - IMPORTANTE: Esta linha deve estar aqui
+// Routes
+app.use('/api/upload', uploadRoutes);
 app.use('/api/companies', companiesRoutes);
 
 // Health check
@@ -44,18 +52,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Rota simples de teste
-app.get('/api/test', (req, res) => {
-  res.json({
-    success: true,
-    message: 'Teste OK! MongoDB conectado',
-    data: {
-      companies: ['pizzaria-italia', 'hamburgueria-artesanal']
-    }
-  });
-});
-
-// 404 handler - CORRIGIDO
+// 404 handler
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -78,5 +75,5 @@ app.listen(PORT, () => {
   console.log(`📊 Ambiente: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
   console.log(`🏪 Companies: http://localhost:${PORT}/api/companies`);
-  console.log(`🍕 Pizzaria: http://localhost:${PORT}/api/companies/pizzaria-italia`);
+  console.log(`🌐 Frontend: http://localhost:5173`);
 });
